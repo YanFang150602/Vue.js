@@ -21,41 +21,41 @@
         <script>
             // 注册
             Vue.component('child', {
-              // 声明 props
-              props: ['message'],
-              // 同样也可以在 vm 实例中像 “this.message” 这样使用
-              template: '<span @click="getMessage">{{ message }}</span>',
-              methods:{
-                getMessage:function(){
-                  alert(this.message);
+                // 声明 props
+                props: ['message'],
+                // 同样也可以在 vm 实例中像 “this.message” 这样使用
+                template: '<span @click="getMessage">{{ message }}</span>',
+                methods:{
+                    getMessage:function(){
+                        alert(this.message);
+                    }
                 }
-              }
             })
             // 创建根实例
             new Vue({
-              el: '#app',
-              data: {
-                childMsgs:[
-                  {
-                    ref:'childRef1',
-                    msg:'Hello ChildRef1!'
-                  },{
-                    ref:'childRef2',
-                    msg:'Hello ChildRef2!'
-                  },{
-                    ref:'childRef3',
-                    msg:'Hello ChildRef3!'
-                  }
-                ]
-              },
-              methods:{
-                click:function(){
-                  for(let index in this.childMsgs){
-                    //当 v-for 用于元素或组件的时候，引用信息将是包含 DOM 节点或组件实例的数组。
-                    this.$refs[this.childMsgs[index].ref][0].getMessage();
+                el: '#app',
+                data: {
+                    childMsgs:[
+                        {
+                            ref:'childRef1',
+                            msg:'Hello ChildRef1!'
+                        },{
+                            ref:'childRef2',
+                            msg:'Hello ChildRef2!'
+                        },{
+                            ref:'childRef3',
+                            msg:'Hello ChildRef3!'
+                        }
+                    ]
+                },
+                methods:{
+                  click:function(){
+                    for(let index in this.childMsgs){
+                      //当 v-for 用于元素或组件的时候，引用信息将是包含 DOM 节点或组件实例的数组。
+                      this.$refs[this.childMsgs[index].ref][0].getMessage();
+                    }
                   }
                 }
-              }
             });
             
         </script>
